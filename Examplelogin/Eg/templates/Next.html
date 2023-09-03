@@ -1,3 +1,5 @@
+{% load static %}
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -5,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>SOP GENERATION TOOL</title>
-    <link rel="stylesheet" type="text/css" href="static\css\style.css">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
 </head>
 <body>
     <section class="container">
@@ -70,8 +72,9 @@
                     {{ form.gicamount.errors }}
                 {% endif %}
             </div>
-
-            <a href='last'><button type="button">Next</button></a>
+            
+            <button type="submit">Next</button>
+            <!-- <a href='last'></a> -->
         </form>
     </section>
 </body>

@@ -51,13 +51,13 @@
             </div>
             <div class="input-box">
                 <label for="{{ form.country.id_for_label }}">Country</label>
-                {{ form.dept }}
+                {{ form.country }}
                 {% if request.method == 'POST' %}
                     {{ form.country.errors }}
                 {% endif %}
             </div>
-            
-           <a href='next'><button type="button">NEXT</button></a>
+            <button type="submit">NEXT</button>
+           <!-- <a href='next'></a> -->
         </form>
     </section>
 </body>

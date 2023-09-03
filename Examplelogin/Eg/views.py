@@ -1,50 +1,57 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from django.shortcuts import get_object_or_404
-from .forms import UserProfileForm
+from .forms import UserProfileForm, SopForm, LastForm
+from .models import UserProfile
 
 def login(request):
-    return render(request,'login.html')
+    print("&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&")
+    return render(request,'index.html')
 
 def registration_view(request):
     if request.method == 'POST':
         form = UserProfileForm(request.POST)
+
         if form.is_valid():
             # The form is valid, save the data to the database
-            form.save()
-            
+            profile =form.save()
             # Redirect to the 'Next.html' page after successful form submission
-            return redirect('nextpage')  # Replace 'next_page_name' with the actual URL name for 'Next.html'
+            return redirect('next', profile.pk)  # Replace 'next_page_name' with the actual URL name for 'Next.html'
     else:
         form = UserProfileForm()
 
     return render(request, 'register.html', {'form': form})
 
-def nextpage(request):
+def nextpage(request, pk):
     if request.method == 'POST':
-        form = UserProfileForm(request.POST)
+        instance = get_object_or_404(UserProfile, id=pk)
+        form = SopForm(request.POST or None, instance=instance)
         if form.is_valid():
-            # The form is valid, save the data to the database
-            form.save()
-            
+            profile = form.save()
             # Redirect to the 'Next.html' page after successful form submission
-            return redirect('submit')  # Replace 'next_page_name' with the actual URL name for 'Next.html'
+            return redirect('last', profile.pk)  # Replace 'next_page_name' with the actual URL name for 'Next.html'
     else:
-        form = UserProfileForm()
+        form = SopForm()
 
     return render(request, 'Next.html', {'form': form})
 
-def submit(request):
+def submit(request, pk):
     if request.method == 'POST':
-        form=UserProfileForm(request.POST)
+        instance = get_object_or_404(UserProfile, id=pk)
+        form = LastForm(request.POST or None, instance=instance)
         if form.is_valid():
-            form.save()
-            return redirect('success')
+            profile = form.save()
+            return redirect('success', profile.pk)
     else:
-        form=UserProfileForm()
+        form=LastForm()
     return render(request,'regform.html',{'form':form})
-def success(request):
-    return render(request,'success.html')
+
+
+def success(request, pk):
+    instance = get_object_or_404(UserProfile, id=pk)
+    # Here you can add SMTP call function
+    print(instance.email)
+    return render(request,'success.html', {"email":instance.email})
 
 
 

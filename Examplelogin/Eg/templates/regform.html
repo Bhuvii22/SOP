@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -5,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>SOP GENERATION TOOL</title>
-    <link rel="stylesheet" type="text/css" href="static/css/style.css">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
 </head>
 <body>
     <section class="container">
@@ -15,7 +16,7 @@
             <div class="input-box">
                 <label for="{{ form.read.id_for_label }}">Fluency in Reading:</label>
                 {{ form.read }}
-                <input type="read" name="read"  required="" id="read" fdprocessedid="u9yh8q">
+               
                 {% if request.method == 'POST' %}
                     {{ form.read.errors }}
                 {% endif %}
@@ -23,7 +24,7 @@
             <div class="input-box">
                 <label for="{{ form.write.id_for_label }}">Fluency in Writing:</label>
                 {{ form.write }}
-                <input type="write" name="write"  required="" id="write" fdprocessedid="u9yh8q">
+                
                
                 {% if request.method == 'POST' %}
                     {{ form.write.errors }}
@@ -32,21 +33,21 @@
             <div class="input-box">
                 <label for="{{ form.speak.id_for_label }}">Fluency in Speaking:</label>
                 {{ form.speak }}     
-                <input type="speak" name="speak"  required="" id="speak" fdprocessedid="u9yh8q">
+               
                 {% if request.method == 'POST' %}
                     {{ form.speak.errors }}
                 {% endif %}
             </div>
             <div class="input-box">
                 <label for="{{ form.listen.id_for_label }}">Fluency in Listening:</label>
-                <input type="listen" name="listen"  required="" id="listen" fdprocessedid="u9yh8q">
+               
                 {{ form.listen}}
                
                 {% if request.method == 'POST' %}
                     {{ form.listen.errors }}
                 {% endif %}
             </div>
-            <a href="success"><button type="button">Submit</button></a>
+            <button type="submit">Submit</button>
         </form>
     </section>
 </body>

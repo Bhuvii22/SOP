@@ -1,10 +1,11 @@
+{% load static %}
 <!DOCTYPE html>
 
 <html lang="en">
   <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>LOGIN</title>
-    <link rel="stylesheet" type="text/css" href="static\css\login.css">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/login.css' %}">
     
     
   </head>
@@ -13,7 +14,7 @@
       
       <header>
         <nav class="nav container">
-            <img src="D:\BHUVAN\dashboard\Examplelogin\Eg\images\logo.png">
+            <img src="{% static 'images/logo.png' %}">
           <h2 class="nav_logo"><a href="https://effizient.ca">Effizient</a></h2>
 
           <ul class="menu_items">
@@ -22,7 +23,7 @@
             <li><a href="reg" class="nav_link">SOP</a></li>
             <li><a href="#" class="nav_link">Contact</a></li>
           </ul>
-          <img src="D:\BHUVAN\dashboard\Examplelogin\Eg\images\bars.svg" alt="timesicon" id="menu_toggle" />
+          <img src="{% static 'images/bars.svg' %}" alt="timesicon" id="menu_toggle" />
         </nav>
       </header>
 
@@ -44,3 +45,5 @@
     </main>
   </body>
 </html>
+
+

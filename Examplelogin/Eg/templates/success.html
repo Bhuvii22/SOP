@@ -1,22 +1,25 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-     <link rel="stylesheet" type="text/css" href="static\css\style.css"> 
+     <link rel="stylesheet" type="text/css" href="{% static 'css\style.css' %}"> 
     <title>Success Page</title>
     
-    <img src="D:\BHUVAN\dashboard\Examplelogin\Eg\images\bg.jpg">
+    <!-- <img src="dashboard\Examplelogin\Eg\images\bg.jpg"> -->
 </head>
-<body><br>
-        <h1>SUCCESSFULLY SUBMITTED!!!</h1>
-
+<style>
+    body {
+      background-image: url("{% static 'bg.jpg' %}");
+    }
+    </style>
+<body>
+    <br>
+ 
+        <h1>{{email}} <br> SUCCESSFULLY SUBMITTED!!!</h1>
         <br>
         <p><b><i>Thanks for choosing our tool</i></b></p>
-        {% comment %} background-image: url('D:\BHUVAN\dashboard\Examplelogin\Eg\images\bg.jpg'); {% endcomment %}
-
-
-
     </div>
 </body>
 </html>
